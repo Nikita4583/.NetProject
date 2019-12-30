@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CustomerSupportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ClientDetail">
+    <Key>
+      <PropertyRef Name="ClientDetailId" />
+    </Key>
+    <Property Name="ClientDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="SoftwareId" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Problems">
+    <Key>
+      <PropertyRef Name="ProblemId" />
+    </Key>
+    <Property Name="ProblemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProblemDetail" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Solutions">
+    <Key>
+      <PropertyRef Name="SolutionId" />
+    </Key>
+    <Property Name="SolutionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SolutionDetail" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblAssignDeveloper">
+    <Key>
+      <PropertyRef Name="AssignDeveloperId" />
+    </Key>
+    <Property Name="AssignDeveloperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeveloperId" Type="int" />
+    <Property Name="TicketSolutionId" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblAssignSoftware">
+    <Key>
+      <PropertyRef Name="AssignSoftwareId" />
+    </Key>
+    <Property Name="AssignSoftwareId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="SoftwareId" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblAssignTicket">
+    <Key>
+      <PropertyRef Name="AssignTicketId" />
+    </Key>
+    <Property Name="AssignTicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketId" Type="int" />
+    <Property Name="AssignDate" Type="datetime" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="MessageForMessage" Type="nvarchar" MaxLength="500" />
+    <Property Name="AssignmentDeadline" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblDesignation">
+    <Key>
+      <PropertyRef Name="DesignationId" />
+    </Key>
+    <Property Name="DesignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DesignationName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblSoftware">
+    <Key>
+      <PropertyRef Name="SoftwareId" />
+    </Key>
+    <Property Name="SoftwareId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoftwareName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoftwareTypeId" Type="int" />
+    <Property Name="SoftwareCreatedDate" Type="date" />
+    <Property Name="DeveloperInfo" Type="nvarchar" MaxLength="500" />
+    <Property Name="SoftwareInfo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblSoftwareType">
+    <Key>
+      <PropertyRef Name="SoftwareTypeId" />
+    </Key>
+    <Property Name="SoftwareTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoftwareTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblTicket">
+    <Key>
+      <PropertyRef Name="TicketId" />
+    </Key>
+    <Property Name="TicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="TicketTypeId" Type="int" />
+    <Property Name="SoftwareId" Type="int" />
+    <Property Name="TicketAssignStatus" Type="bit" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblTicketDetail">
+    <Key>
+      <PropertyRef Name="TicketDetailId" />
+    </Key>
+    <Property Name="TicketDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketId" Type="int" />
+    <Property Name="ClientsProblem" Type="nvarchar" MaxLength="500" />
+    <Property Name="ClientsMessage" Type="nvarchar" MaxLength="500" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblTicketSolution">
+    <Key>
+      <PropertyRef Name="TicketSolutionId" />
+    </Key>
+    <Property Name="TicketSolutionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketId" Type="int" />
+    <Property Name="TicketDetailId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="ProblemId" Type="int" />
+    <Property Name="SolutionId" Type="int" />
+    <Property Name="SolutionSpecification" Type="nvarchar" MaxLength="100" />
+    <Property Name="AssignedToDeveloper" Type="bit" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblTicketType">
+    <Key>
+      <PropertyRef Name="TicketTypeId" />
+    </Key>
+    <Property Name="TicketTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserTypeId" Type="int" />
+    <Property Name="DesignationId" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuthorizeId" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblUserType">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_ClientDetail_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="ClientDetail" Type="Self.ClientDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="ClientDetail">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientDetail_tblSoftware">
+    <End Role="tblSoftware" Type="Self.tblSoftware" Multiplicity="0..1" />
+    <End Role="ClientDetail" Type="Self.ClientDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSoftware">
+        <PropertyRef Name="SoftwareId" />
+      </Principal>
+      <Dependent Role="ClientDetail">
+        <PropertyRef Name="SoftwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssignDeveloper_tblTicketSolution">
+    <End Role="tblTicketSolution" Type="Self.tblTicketSolution" Multiplicity="0..1" />
+    <End Role="tblAssignDeveloper" Type="Self.tblAssignDeveloper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicketSolution">
+        <PropertyRef Name="TicketSolutionId" />
+      </Principal>
+      <Dependent Role="tblAssignDeveloper">
+        <PropertyRef Name="TicketSolutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssignDeveloper_tblUsers">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblAssignDeveloper" Type="Self.tblAssignDeveloper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tblAssignDeveloper">
+        <PropertyRef Name="DeveloperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssignSoftware_tblSoftware">
+    <End Role="tblSoftware" Type="Self.tblSoftware" Multiplicity="0..1" />
+    <End Role="tblAssignSoftware" Type="Self.tblAssignSoftware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSoftware">
+        <PropertyRef Name="SoftwareId" />
+      </Principal>
+      <Dependent Role="tblAssignSoftware">
+        <PropertyRef Name="SoftwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssignSoftware_tblUsers">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblAssignSoftware" Type="Self.tblAssignSoftware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tblAssignSoftware">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssignTicket_tblTicket">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblAssignTicket" Type="Self.tblAssignTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblAssignTicket">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssignTicket_tblUsers">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblAssignTicket" Type="Self.tblAssignTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tblAssignTicket">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSoftware_tblSoftwareType">
+    <End Role="tblSoftwareType" Type="Self.tblSoftwareType" Multiplicity="0..1" />
+    <End Role="tblSoftware" Type="Self.tblSoftware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSoftwareType">
+        <PropertyRef Name="SoftwareTypeId" />
+      </Principal>
+      <Dependent Role="tblSoftware">
+        <PropertyRef Name="SoftwareTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicket_tblSoftware">
+    <End Role="tblSoftware" Type="Self.tblSoftware" Multiplicity="0..1" />
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSoftware">
+        <PropertyRef Name="SoftwareId" />
+      </Principal>
+      <Dependent Role="tblTicket">
+        <PropertyRef Name="SoftwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicket_tblTicketType">
+    <End Role="tblTicketType" Type="Self.tblTicketType" Multiplicity="0..1" />
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicketType">
+        <PropertyRef Name="TicketTypeId" />
+      </Principal>
+      <Dependent Role="tblTicket">
+        <PropertyRef Name="TicketTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicketDetail_tblTicket">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblTicketDetail" Type="Self.tblTicketDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblTicketDetail">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicketSolution_Problems">
+    <End Role="Problems" Type="Self.Problems" Multiplicity="0..1" />
+    <End Role="tblTicketSolution" Type="Self.tblTicketSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problems">
+        <PropertyRef Name="ProblemId" />
+      </Principal>
+      <Dependent Role="tblTicketSolution">
+        <PropertyRef Name="ProblemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicketSolution_Solutions">
+    <End Role="Solutions" Type="Self.Solutions" Multiplicity="0..1" />
+    <End Role="tblTicketSolution" Type="Self.tblTicketSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solutions">
+        <PropertyRef Name="SolutionId" />
+      </Principal>
+      <Dependent Role="tblTicketSolution">
+        <PropertyRef Name="SolutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicketSolution_tblTicket">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblTicketSolution" Type="Self.tblTicketSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblTicketSolution">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicketSolution_tblTicketDetail">
+    <End Role="tblTicketDetail" Type="Self.tblTicketDetail" Multiplicity="0..1" />
+    <End Role="tblTicketSolution" Type="Self.tblTicketSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicketDetail">
+        <PropertyRef Name="TicketDetailId" />
+      </Principal>
+      <Dependent Role="tblTicketSolution">
+        <PropertyRef Name="TicketDetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTicketSolution_tblUsers">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblTicketSolution" Type="Self.tblTicketSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tblTicketSolution">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblDesignation">
+    <End Role="tblDesignation" Type="Self.tblDesignation" Multiplicity="0..1" />
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDesignation">
+        <PropertyRef Name="DesignationId" />
+      </Principal>
+      <Dependent Role="tblUsers">
+        <PropertyRef Name="DesignationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsers_tblUserType">
+    <End Role="tblUserType" Type="Self.tblUserType" Multiplicity="0..1" />
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserType">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="tblUsers">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CustomerSupportModelStoreContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientDetail" EntityType="Self.ClientDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Problems" EntityType="Self.Problems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Solutions" EntityType="Self.Solutions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssignDeveloper" EntityType="Self.tblAssignDeveloper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssignSoftware" EntityType="Self.tblAssignSoftware" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssignTicket" EntityType="Self.tblAssignTicket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDesignation" EntityType="Self.tblDesignation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSoftware" EntityType="Self.tblSoftware" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSoftwareType" EntityType="Self.tblSoftwareType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTicket" EntityType="Self.tblTicket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTicketDetail" EntityType="Self.tblTicketDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTicketSolution" EntityType="Self.tblTicketSolution" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTicketType" EntityType="Self.tblTicketType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserType" EntityType="Self.tblUserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ClientDetail_Client" Association="Self.FK_ClientDetail_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ClientDetail" EntitySet="ClientDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientDetail_tblSoftware" Association="Self.FK_ClientDetail_tblSoftware">
+      <End Role="tblSoftware" EntitySet="tblSoftware" />
+      <End Role="ClientDetail" EntitySet="ClientDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssignDeveloper_tblTicketSolution" Association="Self.FK_tblAssignDeveloper_tblTicketSolution">
+      <End Role="tblTicketSolution" EntitySet="tblTicketSolution" />
+      <End Role="tblAssignDeveloper" EntitySet="tblAssignDeveloper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssignDeveloper_tblUsers" Association="Self.FK_tblAssignDeveloper_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblAssignDeveloper" EntitySet="tblAssignDeveloper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssignSoftware_tblSoftware" Association="Self.FK_tblAssignSoftware_tblSoftware">
+      <End Role="tblSoftware" EntitySet="tblSoftware" />
+      <End Role="tblAssignSoftware" EntitySet="tblAssignSoftware" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssignSoftware_tblUsers" Association="Self.FK_tblAssignSoftware_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblAssignSoftware" EntitySet="tblAssignSoftware" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssignTicket_tblTicket" Association="Self.FK_tblAssignTicket_tblTicket">
+      <End Role="tblTicket" EntitySet="tblTicket" />
+      <End Role="tblAssignTicket" EntitySet="tblAssignTicket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssignTicket_tblUsers" Association="Self.FK_tblAssignTicket_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblAssignTicket" EntitySet="tblAssignTicket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSoftware_tblSoftwareType" Association="Self.FK_tblSoftware_tblSoftwareType">
+      <End Role="tblSoftwareType" EntitySet="tblSoftwareType" />
+      <End Role="tblSoftware" EntitySet="tblSoftware" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicket_tblSoftware" Association="Self.FK_tblTicket_tblSoftware">
+      <End Role="tblSoftware" EntitySet="tblSoftware" />
+      <End Role="tblTicket" EntitySet="tblTicket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicket_tblTicketType" Association="Self.FK_tblTicket_tblTicketType">
+      <End Role="tblTicketType" EntitySet="tblTicketType" />
+      <End Role="tblTicket" EntitySet="tblTicket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicketDetail_tblTicket" Association="Self.FK_tblTicketDetail_tblTicket">
+      <End Role="tblTicket" EntitySet="tblTicket" />
+      <End Role="tblTicketDetail" EntitySet="tblTicketDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicketSolution_Problems" Association="Self.FK_tblTicketSolution_Problems">
+      <End Role="Problems" EntitySet="Problems" />
+      <End Role="tblTicketSolution" EntitySet="tblTicketSolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicketSolution_Solutions" Association="Self.FK_tblTicketSolution_Solutions">
+      <End Role="Solutions" EntitySet="Solutions" />
+      <End Role="tblTicketSolution" EntitySet="tblTicketSolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicketSolution_tblTicket" Association="Self.FK_tblTicketSolution_tblTicket">
+      <End Role="tblTicket" EntitySet="tblTicket" />
+      <End Role="tblTicketSolution" EntitySet="tblTicketSolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicketSolution_tblTicketDetail" Association="Self.FK_tblTicketSolution_tblTicketDetail">
+      <End Role="tblTicketDetail" EntitySet="tblTicketDetail" />
+      <End Role="tblTicketSolution" EntitySet="tblTicketSolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTicketSolution_tblUsers" Association="Self.FK_tblTicketSolution_tblUsers">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblTicketSolution" EntitySet="tblTicketSolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblDesignation" Association="Self.FK_tblUsers_tblDesignation">
+      <End Role="tblDesignation" EntitySet="tblDesignation" />
+      <End Role="tblUsers" EntitySet="tblUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsers_tblUserType" Association="Self.FK_tblUsers_tblUserType">
+      <End Role="tblUserType" EntitySet="tblUserType" />
+      <End Role="tblUsers" EntitySet="tblUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

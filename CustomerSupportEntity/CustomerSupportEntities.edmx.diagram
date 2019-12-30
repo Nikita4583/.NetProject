@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="605e099c5d3142a08b181f6c6ee71801" Name="Diagram1">
+        <EntityTypeShape EntityType="CustomerSupportModel.Client" Width="1.5" PointX="5.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.ClientDetail" Width="1.5" PointX="8" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.Problem" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.Solution" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblAssignDeveloper" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblAssignSoftware" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblAssignTicket" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblDesignation" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblSoftware" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblSoftwareType" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblTicket" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblTicketDetail" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblTicketSolution" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblTicketType" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblUser" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomerSupportModel.tblUserType" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="CustomerSupportModel.FK_ClientDetail_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_ClientDetail_tblSoftware" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicketSolution_Problems" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicketSolution_Solutions" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblAssignDeveloper_tblTicketSolution" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblAssignDeveloper_tblUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblAssignSoftware_tblSoftware" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblAssignSoftware_tblUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblAssignTicket_tblTicket" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblAssignTicket_tblUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblUsers_tblDesignation" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblSoftware_tblSoftwareType" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicket_tblSoftware" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicket_tblTicketType" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicketDetail_tblTicket" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicketSolution_tblTicket" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicketSolution_tblTicketDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblTicketSolution_tblUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomerSupportModel.FK_tblUsers_tblUserType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

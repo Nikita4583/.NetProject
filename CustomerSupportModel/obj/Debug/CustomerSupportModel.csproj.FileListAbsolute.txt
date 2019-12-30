@@ -1,0 +1,5 @@
+c:\users\u\documents\visual studio 2015\Projects\CustomerSupportSystem\CustomerSupportModel\bin\Debug\CustomerSupportModel.dll
+c:\users\u\documents\visual studio 2015\Projects\CustomerSupportSystem\CustomerSupportModel\bin\Debug\CustomerSupportModel.pdb
+c:\users\u\documents\visual studio 2015\Projects\CustomerSupportSystem\CustomerSupportModel\obj\Debug\CustomerSupportModel.csprojResolveAssemblyReference.cache
+c:\users\u\documents\visual studio 2015\Projects\CustomerSupportSystem\CustomerSupportModel\obj\Debug\CustomerSupportModel.dll
+c:\users\u\documents\visual studio 2015\Projects\CustomerSupportSystem\CustomerSupportModel\obj\Debug\CustomerSupportModel.pdb
